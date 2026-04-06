@@ -21,29 +21,49 @@ function ParticleCanvas() {
     };
     window.addEventListener("resize", onResize);
 
-    const COLORS = ["#8B5CF6", "#7C3AED", "#06B6D4", "#0EA5E9", "#a78bfa", "#22d3ee"];
+    const COLORS = [
+      "#8B5CF6",
+      "#7C3AED",
+      "#06B6D4",
+      "#0EA5E9",
+      "#a78bfa",
+      "#22d3ee",
+    ];
     const PARTICLE_COUNT = 130;
 
     interface Particle {
-      x: number; y: number; vx: number; vy: number;
-      r: number; color: string; alpha: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      r: number;
+      color: string;
+      alpha: number;
     }
 
-    const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
-      x: Math.random() * w, y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
-      r: Math.random() * 1.8 + 0.4,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      alpha: Math.random() * 0.65 + 0.15,
-    }));
+    const particles: Particle[] = Array.from(
+      { length: PARTICLE_COUNT },
+      () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.8 + 0.4,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        alpha: Math.random() * 0.65 + 0.15,
+      }),
+    );
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
@@ -51,7 +71,8 @@ function ParticleCanvas() {
         ctx.fill();
         for (let j = i + 1; j < particles.length; j++) {
           const q = particles[j];
-          const dx = p.x - q.x, dy = p.y - q.y;
+          const dx = p.x - q.x,
+            dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             ctx.beginPath();
@@ -69,10 +90,19 @@ function ParticleCanvas() {
     };
     draw();
 
-    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", onResize); };
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ opacity: 0.5 }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ opacity: 0.5 }}
+    />
+  );
 }
 
 function PhotoCard() {
@@ -90,7 +120,10 @@ function PhotoCard() {
     x.set(e.clientX - cx);
     y.set(e.clientY - cy);
   };
-  const handleLeave = () => { x.set(0); y.set(0); };
+  const handleLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <motion.div
@@ -99,7 +132,12 @@ function PhotoCard() {
       transition={{ duration: 0.9, delay: 2.6, ease: [0.34, 1.56, 0.64, 1] }}
       onMouseMove={handleMouse}
       onMouseLeave={handleLeave}
-      style={{ rotateX: rotateXSpring, rotateY: rotateYSpring, transformStyle: "preserve-3d", perspective: 800 }}
+      style={{
+        rotateX: rotateXSpring,
+        rotateY: rotateYSpring,
+        transformStyle: "preserve-3d",
+        perspective: 800,
+      }}
       className="relative w-64 h-80 lg:w-72 lg:h-96 rounded-2xl cursor-pointer group flex-shrink-0"
     >
       {/* Glow behind card */}
@@ -120,7 +158,9 @@ function PhotoCard() {
           <div className="absolute bottom-4 left-4 right-4">
             <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md border border-primary/30 rounded-full px-3 py-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs font-mono text-green-400 tracking-widest">AVAILABLE FOR WORK</span>
+              <span className="text-xs font-mono text-green-400 tracking-widest">
+                AVAILABLE FOR WORK
+              </span>
             </div>
           </div>
         </div>
@@ -140,7 +180,12 @@ function PhotoCard() {
 
 export function Hero() {
   const [typed, setTyped] = useState("");
-  const roles = ["3D Artist", "Creative Developer", "UI Innovator", "WebGL Alchemist"];
+  const roles = [
+    "3D Artist",
+    "Creative Developer",
+    "UI Innovator",
+    "WebGL Alchemist",
+  ];
   const [roleIdx, setRoleIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -156,7 +201,7 @@ export function Hero() {
         setRoleIdx((i) => (i + 1) % roles.length);
       } else {
         setTyped((t) =>
-          isDeleting ? t.slice(0, -1) : currentRole.slice(0, t.length + 1)
+          isDeleting ? t.slice(0, -1) : currentRole.slice(0, t.length + 1),
         );
       }
     }, speed);
@@ -197,7 +242,9 @@ export function Hero() {
             className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 leading-none"
           >
             YOUM
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">NA</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              NA
+            </span>
           </motion.h1>
 
           {/* Typewriter role */}
@@ -218,8 +265,9 @@ export function Hero() {
             transition={{ delay: 3.1, duration: 0.7 }}
             className="text-muted-foreground text-base font-light leading-relaxed mb-10 max-w-md"
           >
-            Crafting immersive digital experiences where code meets artistry. 
-            From WebGL environments to responsive interfaces — I build what others only imagine.
+            Crafting immersive digital experiences where code meets artistry.
+            From WebGL environments to responsive interfaces — I build what
+            others only imagine.
           </motion.p>
 
           <motion.div
@@ -233,7 +281,10 @@ export function Hero() {
               className="group relative flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-medium tracking-wide uppercase text-sm rounded-full overflow-hidden hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all duration-300 hover:scale-105"
             >
               <span className="relative z-10">View My Work</span>
-              <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={16}
+                className="relative z-10 group-hover:translate-x-1 transition-transform"
+              />
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
             <button
@@ -283,7 +334,9 @@ export function Hero() {
         onClick={() => scrollToSection("about")}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-muted-foreground cursor-pointer hover:text-primary transition-colors group"
       >
-        <span className="text-xs font-mono tracking-widest uppercase mb-2 group-hover:text-primary transition-colors">Explore</span>
+        <span className="text-xs font-mono tracking-widest uppercase mb-2 group-hover:text-primary transition-colors">
+          Explore
+        </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

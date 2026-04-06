@@ -43,7 +43,10 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-32 relative bg-background overflow-hidden">
+    <section
+      id="about"
+      className="py-32 relative bg-background overflow-hidden"
+    >
       <div className="absolute top-0 right-0 w-1/2 h-[500px] bg-primary/5 blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/3 h-[300px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -54,7 +57,9 @@ export function About() {
           viewport={{ once: true }}
           className="flex items-center gap-4 mb-16"
         >
-          <span className="text-secondary font-mono tracking-widest text-sm">// ABOUT ME</span>
+          <span className="text-secondary font-mono tracking-widest text-sm">
+            // ABOUT ME
+          </span>
           <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-primary/50 to-transparent" />
         </motion.div>
 
@@ -70,16 +75,20 @@ export function About() {
             {/* Photo */}
             <div className="relative group mx-auto lg:mx-0 w-full max-w-sm">
               <div className="absolute -inset-1 bg-gradient-to-br from-primary/50 to-secondary/50 rounded-2xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="relative rounded-2xl overflow-hidden border border-primary/20 aspect-[4/3]">
+              <div className="relative rounded-2xl overflow-hidden border border-primary/20 h-[350px]">
                 <img
                   src="/assets/youmna.png"
                   alt="Youmna"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-[200%] object-cover object-top -translate-y-1/4 group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                  <p className="text-white font-bold text-xl tracking-tight">Youmna</p>
-                  <p className="text-primary text-sm font-mono">3D Artist & Developer</p>
+                  <p className="text-white font-bold text-xl tracking-tight">
+                    Youmna
+                  </p>
+                  <p className="text-primary text-sm font-mono">
+                    3D Artist & Developer
+                  </p>
                 </div>
               </div>
             </div>
@@ -87,13 +96,19 @@ export function About() {
             {/* Bio */}
             <div className="space-y-5 text-muted-foreground text-base font-light leading-relaxed">
               <p>
-                I live in the liminal space between logic and aesthetics — where clean code becomes living art. Traditional developers see DOM elements; I see a canvas waiting for light, dimension, and physics.
+                I live in the liminal space between logic and aesthetics — where
+                clean code becomes living art. Traditional developers see DOM
+                elements; I see a canvas waiting for light, dimension, and
+                physics.
               </p>
               <p>
-                My passion is escaping the flat web. By fusing frontend engineering with WebGL and 3D pipelines, I craft experiences that don't just present information — they pull the viewer in.
+                My passion is escaping the flat web. By fusing frontend
+                engineering with WebGL and 3D pipelines, I craft experiences
+                that don't just present information — they pull the viewer in.
               </p>
               <blockquote className="border-l-2 border-secondary pl-4 text-foreground/80 italic text-sm">
-                "The screen is not a boundary — it is a window into a synthesized reality."
+                "The screen is not a boundary — it is a window into a
+                synthesized reality."
               </blockquote>
             </div>
 
@@ -115,7 +130,9 @@ export function About() {
 
           {/* Right: Timeline */}
           <motion.div variants={item} className="relative">
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-10">MY JOURNEY</h2>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-10">
+              MY JOURNEY
+            </h2>
 
             <div className="absolute left-[27px] top-[72px] bottom-4 w-px bg-gradient-to-b from-primary/60 to-transparent hidden" />
 
@@ -136,13 +153,17 @@ export function About() {
                     {/* Content */}
                     <div className="flex flex-col pt-2 border-b border-border/30 pb-8 flex-1">
                       <div className="flex items-center gap-3 mb-1">
-                        <span className="text-xs font-mono tracking-widest text-secondary">{step.year}</span>
+                        <span className="text-xs font-mono tracking-widest text-secondary">
+                          {step.year}
+                        </span>
                         <div className="h-px flex-1 bg-border/40" />
                       </div>
                       <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                         {step.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm font-light leading-relaxed">{step.desc}</p>
+                      <p className="text-muted-foreground text-sm font-light leading-relaxed">
+                        {step.desc}
+                      </p>
                     </div>
                   </motion.div>
                 );
