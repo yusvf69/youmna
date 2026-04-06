@@ -63,7 +63,7 @@ export function Navbar() {
             <span className="text-sm font-black text-white tracking-tighter">YO</span>
           </div>
           <span className="text-sm font-mono tracking-widest text-muted-foreground group-hover:text-foreground transition-colors">
-            youmna<span className="text-primary">.</span>dev
+            youmna
           </span>
         </a>
 
