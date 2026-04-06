@@ -19,21 +19,15 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-
-      // Determine active section
       const sections = navItems.map((item) => item.href.substring(1));
       let current = "";
-
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element && window.scrollY >= element.offsetTop - 200) {
           current = section;
         }
       }
-
-      if (current) {
-        setActiveSection(current);
-      }
+      if (current) setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -43,39 +37,38 @@ export function Navbar() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    
     const targetId = href.substring(1);
     const element = document.getElementById(targetId);
-    
     if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: element.offsetTop, behavior: "smooth" });
     }
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-4"
+          ? "bg-background/75 backdrop-blur-xl border-b border-border/40 py-3"
           : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a 
-          href="#hero" 
+        {/* Logo */}
+        <a
+          href="#hero"
           onClick={(e) => scrollToSection(e, "#hero")}
-          className="text-2xl font-bold tracking-tighter cursor-pointer group"
+          className="flex items-center gap-2 cursor-pointer group"
         >
-          <span className="text-white group-hover:text-primary transition-colors">A</span>
-          <span className="text-primary group-hover:text-secondary transition-colors">R</span>
-          <span className="text-secondary text-lg ml-1">_</span>
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-[0_0_14px_rgba(139,92,246,0.4)] group-hover:shadow-[0_0_22px_rgba(139,92,246,0.7)] transition-all duration-300">
+            <span className="text-sm font-black text-white tracking-tighter">YO</span>
+          </div>
+          <span className="text-sm font-mono tracking-widest text-muted-foreground group-hover:text-foreground transition-colors">
+            youmna<span className="text-primary">.</span>dev
+          </span>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item.name}
@@ -98,6 +91,19 @@ export function Navbar() {
               )}
             </a>
           ))}
+          {/* Hire Me CTA */}
+          <a
+            href="#contact"
+            onClick={(e) => scrollToSection(e, "#contact")}
+            className="relative px-4 py-2 text-xs font-mono tracking-widest uppercase text-primary border border-primary/50 rounded-full hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_14px_rgba(139,92,246,0.4)] transition-all duration-300 cursor-pointer group overflow-hidden"
+          >
+            <span className="relative z-10">Hire Me</span>
+            <motion.div
+              className="absolute inset-0 bg-primary/10"
+              animate={{ opacity: [0, 0.5, 0] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+            />
+          </a>
         </nav>
 
         {/* Mobile Toggle */}
@@ -133,6 +139,13 @@ export function Navbar() {
                   {item.name}
                 </a>
               ))}
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="text-center py-3 border border-primary/50 rounded-full text-primary font-mono uppercase tracking-widest text-sm cursor-pointer"
+              >
+                Hire Me
+              </a>
             </div>
           </motion.nav>
         )}
