@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "7SiO6AE2Yew5OM2OPWe9T"
+uri = "file://artifacts/portfolio/public/assets/projects/project1.png"
+type = "image"
+title = "Cyberpunk city render"
+
+[[generated]]
+id = "jG-LA5E3youa2ECA_eYgJ"
+uri = "file://artifacts/portfolio/public/assets/projects/project2.png"
+type = "image"
+title = "Abstract data dashboard"
+
+[[generated]]
+id = "qp_ibz05zcz7hiEe_onWk"
+uri = "file://artifacts/portfolio/public/assets/projects/project3.png"
+type = "image"
+title = "Futuristic UI concept"
+
+[[generated]]
+id = "VCgutm3fnhEK7ZjpoBQQI"
+uri = "file://artifacts/portfolio/public/assets/projects/project4.png"
+type = "image"
+title = "3D product configurator"
+
+[[generated]]
+id = "LWFoUcVx9xlXGBf49_4xy"
+uri = "file://artifacts/portfolio/public/assets/projects/project5.png"
+type = "image"
+title = "Generative art sequence"
+
+[[generated]]
+id = "k14zu1tfONFZaukRgIw_w"
+uri = "file://artifacts/portfolio/public/assets/projects/project6.png"
+type = "image"
+title = "Sci-fi landscape"
+
+[[generated]]
+id = "MNCafgpFs7UxqZZoJ5yD1"
+uri = "file://artifacts/portfolio/public/assets/gallery/gallery1.png"
+type = "image"
+title = "Sci-fi interior"
+
+[[generated]]
+id = "wUKOwiHKRqVFq20le2QMl"
+uri = "file://artifacts/portfolio/public/assets/gallery/gallery2.png"
+type = "image"
+title = "Abstract metallic shapes"
+
+[[generated]]
+id = "eBzS0sbO7TOwDa7aHpJk1"
+uri = "file://artifacts/portfolio/public/assets/gallery/gallery3.png"
+type = "image"
+title = "Glowing crystals"
+
+[[generated]]
+id = "uQF92o-hbV5kShhsqxWbF"
+uri = "file://artifacts/portfolio/public/assets/gallery/gallery4.png"
+type = "image"
+title = "Deep space nebula"
