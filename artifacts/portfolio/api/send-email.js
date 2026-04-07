@@ -1,25 +1,17 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+const nodemailer = require("nodemailer");
 
-interface EmailRequest {
-  name: string;
-  email: string;
-  message: string;
-}
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, message } = req.body as EmailRequest;
+  const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
   }
 
   try {
-    const nodemailer = (await import("nodemailer")).default;
-
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -46,4 +38,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.error("Email error:", error);
     return res.status(500).json({ error: "Failed to send email" });
   }
-}
+};
